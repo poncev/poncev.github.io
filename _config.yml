@@ -18,10 +18,11 @@ markdown:            kramdown
 highlighter:         rouge
 permalink:           /:title
 plugins:             [jekyll-paginate, jekyll-sitemap, jekyll-feed, jekyll-seo-tag]
+timezone:            Europe/Madrid
 
 # Customise atom feed settings (this is where Jekyll-Feed gets configuration information)
-title:		           'Random Notes'
-description:	       'personal notes on mathematics'
+title:		           'A Wandering Mathematician'
+description:	       'personal notes'
 author:              'Felipe Ponce-Vanegas'
 
 # RSS 2.0 can be used instead of Atom by uncommenting following two lines
