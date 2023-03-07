@@ -1,0 +1,53 @@
+---
+layout: post
+title: "The Miracle of Data-Driven Modelling"
+author: "Felipe Ponce-Vanegas"
+categories: general
+---
+
+# The Mircale of Data-Driven Modelling
+
+In problems like telling whether there is a cat in a picture
+we are given an input, in this case a picture, and the system must deliver
+an output, yes or not in this case.
+
+We can think of the input as a vector $x = (x_1, \ldots, x_N)$ in a
+high dimensional space $\R^N$, where $N$ could easily be around millions.
+In a black and white photo with a regular camera each photo has $1920\times 1080$ pixels,
+so we can think of each photo as a vector $x\in\R^N$, where $N = 1920\times 1080 = 2\,073\,600$
+and the value of each variable $0 \le x_i \le 1$ is in a gray scale, where
+0 is white and 1 is black.
+
+Since every vector $x$ is contained in the unit cube (or rather, hyper-cube) $[0,1]^N$,
+one approach we can take to solve the problem of deciding whether there is cat in a photo
+is to divide $[0,1]^N$ into cubes of side-length $l$.
+The size of $l$ depends on what we will consider as different photos,
+so we can measure the distance between two points as
+$$\lVert x - y\rVert^2 := \sum_{i=1}^N \,\lvert x_i - y_i\rvert^2$$
+and we can set a tolerance $\lVert x - y\rVert > \delta$ will be considered different.
+
+<img src="../assets/img/the-miracle-of-data-driven-modelling/hypercube.png"
+    alt="hypercube"
+    display=block
+    align=left
+    width=30%
+    height=auto />
+
+If we want to divide $[0,1]^N$ into cubes, how small should they be?
+The distance between a point in a cube of side-length $l$ and the center of the cube is at most
+$$\lVert x - y\rVert \le \sqrt{N}(l/2)$$
+and this bound cannot be improved.
+To put it in context, suppose that each variable in $x$ is a measure in millimeters,
+so if $N = 10^6$, then there are pairs of points in a cube of volume 1 $\textrm{mm}^N$ at 1 m of distance!
+This is a manifestation of the curse of dimensionality; see also <a href="https://en.wikipedia.org/wiki/Concentration_of_measure" target="_blank"> Concentration of Measure </a>.
+
+The length of our smaller cubes should be $l \approx \delta / \sqrt{N}$,
+which is very small if $N$ is large.
+Now, the number of cubes we need to tile $[0,1]^N$ is
+$$M = l^N \approx (N/\sqrt{\delta})^{N/2}.$$
+If $N = 10^6$, then $M$ is huge, larger than atoms in the earth, and it scales
+terrible fast. How can we possible learn from data when we need so much?
+
+The answer is that a typical picture is not a bunch of random pixels, but
+they have some structure. So, the big challenge in Data Science is to discover
+the structure of data.
