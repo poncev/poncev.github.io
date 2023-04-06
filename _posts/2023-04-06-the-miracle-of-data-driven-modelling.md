@@ -5,11 +5,11 @@ author: "Felipe Ponce-Vanegas"
 categories: general
 ---
 
-# The Miracle of Data-Driven Modelling
-
 A typical problem in machine learning is to fit a collection of labelled data points
 $(\bold{x}^1, y^1), \ldots, (\bold{x}^p, y^p)$ using some model function
+
 $$y = f(\bold{x}).$$
+
 Each point $\bold{x} = (x_1, \ldots, x_N)$ is a vector in $\R^N$, where $N$ could easily be about millions.
 For example, a black and white picture with a regular camera may has $1920\times 1080$ pixels,
 so we can think of each photo as a vector $\bold{x}\in\R^N$, where $N = 1920\times 1080 = 2\,073\,600$
@@ -33,12 +33,16 @@ To sample $[0,1]^N$ uniformly
 we divide $[0,1]^N$ into smaller cubes of side-length $l$ and sample the center $\bold{x}^{\textrm{center}}$ of the cubes.
 The size of $l$ depends on the resolution we wish for our algorithm.
 If we define the Pythagorean distance function
+
 $$\lVert \bold{x}^1 - \bold{x}^2\rVert^2 := \sum_{i=1}^N \,\lvert x_i^1 - x_i^2\rvert^2,$$
+
 then we may be satisfied accepting two points $\bold{x}^1$ and $\bold{x}^2$ as equal if $\lVert \bold{x}^1 - \bold{x}^2\rVert < \delta$ for some small number $\delta$ which we call resolution.
 
 In a cube of side-length $l$,
 the distance between a point and the center of the cube is at most
+
 $$\lVert \bold{x}^{\textrm{center}} - \bold{x}\rVert \le \sqrt{N}(l/2),$$
+
 and this bound cannot be improved.
 To put it in context, suppose that our data points belong to $\R^{10^6}$ and that each variable $x_i$ is measured in millimeters,
 then in a cube of side-length $l = 1$ mm there exist pairs of points at 1 m of distance apart!
@@ -70,7 +74,5 @@ Then, one of the challenges in Data Science is to be able to detect and exploit 
 
 ## Other references
 
-1. Mallat, S. (2016). Understanding deep convolutional networks, *Phil. Trans. R. Soc. A.* **374**: 20150203. [link][1]
+1. Mallat, S. (2016). Understanding deep convolutional networks, *Phil. Trans. R. Soc. A.* **374**: 20150203.
 2. Hastie, T., Tibshirani, R., & Friedman, J. (2009). *The elements of statistical learning: Data mining, inference, and prediction*, 2nd ed. Springer.
-
-[1]: https://doi.org/10.1098/rsta.2015.020

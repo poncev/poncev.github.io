@@ -20,12 +20,12 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script>
-  MathJax = {
+  window.MathJax = {
     tex: {
       inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$', '$$']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
       macros: {
-        R: '\\mathbb{R}'
+        R: '\\mathbb{R}',
         bold: ["\\boldsymbol{#1}", 1]
       }
     }
