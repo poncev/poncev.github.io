@@ -1,9 +1,8 @@
 ---
 layout: post
 title: "About the Author"
-author: "Felipe Ponce"
-categories: journal
-tags: [documentation,sample]
+author: "Felipe Ponce-Vanegas"
+categories: general
 ---
 
 My name is Felipe Ponce-Vanegas. I am a postdoc fellow at
