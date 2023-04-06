@@ -36,13 +36,6 @@ If we define the Pythagorean distance function
 $$\lVert \bold{x}^1 - \bold{x}^2\rVert^2 := \sum_{i=1}^N \,\lvert x_i^1 - x_i^2\rvert^2,$$
 then we may be satisfied accepting two points $\bold{x}^1$ and $\bold{x}^2$ as equal if $\lVert \bold{x}^1 - \bold{x}^2\rVert < \delta$ for some small number $\delta$ which we call resolution.
 
-<!-- <img src="../assets/img/the-miracle-of-data-driven-modelling/hypercube.png"
-    alt="hypercube"
-    display=block
-    align=left
-    width=30%
-    height=auto /> -->
-
 In a cube of side-length $l$,
 the distance between a point and the center of the cube is at most
 $$\lVert \bold{x}^{\textrm{center}} - \bold{x}\rVert \le \sqrt{N}(l/2),$$
