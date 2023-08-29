@@ -74,5 +74,4 @@ Then, one of the challenges in Data Science is to be able to detect and exploit 
 
 ## Other references
 
-1. Mallat, S. (2016). Understanding deep convolutional networks, *Phil. Trans. R. Soc. A.* **374**: 20150203.
-2. Hastie, T., Tibshirani, R., & Friedman, J. (2009). *The elements of statistical learning: Data mining, inference, and prediction*, 2nd ed. Springer.
+{% bibliography -q @*[key=mallat16] @*[key=hastie09] %}

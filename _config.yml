@@ -33,7 +33,7 @@ future: true
 
 # To include bibliography 
 scholar:
-  style: cambridge-university-press-numeric
+  style: apa
   locale: en
 
   sort_by: none
