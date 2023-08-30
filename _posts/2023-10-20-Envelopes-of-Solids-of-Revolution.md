@@ -23,10 +23,15 @@ to understand the consequences of the knots on the smoothness of the envelope.
 In our paper we illustrate different phenomena using pictures of envelopes generated under several circumstances,
 and it is the objective of this post to show how to produce one of these pictures, Figure 10 in our paper.
 
+*Warning*: since this post is based on {% cite ponce23 %},
+I will use the notation and concepts in it without further notice.
+
 Figure 8 was rendered using <a href="http://www.povray.org/" target="_blank"> POV-Ray </a>,
 and the parameterization of the different geometrical objects was done with Matlab.
-The code has been uploaded to GitHub, and from now on
+The code has been uploaded to BCAM's GitLab, and from now on
 I will refer to the files as found there.
+
+*Note:* The code was tested only in Ubuntu.
 
 ## Matlab Code
 
@@ -109,17 +114,140 @@ For Figure 8 we used the trajectory
     a2 = spmak([0 2 2], 2);
     a3 = spmak([0 1 2 2 2], [-0.6 -0.8]);
 
-To create an instance of **RigidMotion** we write:
+Now we create an instance of **RigidMotion**:
 
     rm = RigidMotion(theta, phi, a1, a2, a3);
 
-The **RigidMotion** has the method *exp_povray* which creates a file named *rotation_time.txt*.
+**RigidMotion** has the method *exp_povray* which creates a file named *rotation_*[time]*.txt*.
 This file can be read by POV-Ray to move an object according to the rigid motion.
 In the Command Window type `rm.exp_povray(2)` so that we can place the tool at the end of the envelope at time $t = 2$.
 
 ### The Envelope class
 
+This is the more complex class, and I explain here only what is strictly necessary;
+at the end of this post I give more details.
+To instantiate the class we need a tool and a rigid motion:
+
+    e = Envelope(tl, rm);
+
+Since the envelope tends to be singular along the edge of regression (cite paper),
+we want to rule out its presence by verifying that $\partial_t^2 G$ does not change sign.
+For that, type in the Command Window `e.plot_Gtt(2^6 + 1, 2^6 + 1);` and inspect the plot;
+the arguments of *plot_Gtt* are the number of subdivisions of the time interval and tool length, respectively.
+
+To see the envelope swept by `tl` subject to the motion `rm`,
+type in the Command Window
+
+    e.plot_envelope(2^5 + 1, 2^5 + 1);
+    axis equal;
+
+Since our goal is to visualize the envelope in POV-Ray,
+let us type `e.plot_envelope(2^5 + 1, 2^5 + 1, povray=true);` to generate a file called *envelope.txt*,
+which saves the points of the envelope and the normal vectors to each of them so that
+POV-Ray can read them as <a href="https://www.povray.org/documentation/view/3.6.1/295/" target="_blank"> smooth triangles</a> in a <a href="https://www.povray.org/documentation/view/3.6.1/292/" target="_blank"> mesh</a>.
+
+We can also plot the characteristic curves and streamlines on the envelope.
+For that, type `hold on` to hold the plot of the envelope, and
+then type `e.plot_characteristic(1, 2^7 + 1);` and `e.plot_time_curves(0, 2^7 + 1);`.
+We can see now the characteristic curve at time $t = 1$, and
+the streamline at tool height $l = 0$;
+both methods also have a *povray* keyword argument to generate files which POV-Ray can read.
+We emphasize these curves because smoothness is lost along them.
+
 ## POV-Ray Code
+
+The goal of this section is to generate the envelope defined in the previous section:
+
+<p style="text-align:center;">
+<img
+    src="/assets/img/C1_Regular.png"
+    alt="rotation"
+    width="200">
+</p>
+<p style="text-align:center;"><em><small>
+Envelope with the tool (green) depicted at the end time.
+</small></em></p>
+
+Basic information about the placement of the camera and the light source in POV-Ray can be found
+<a href="https://www.povray.org/documentation/3.7.0/t2_2.html#t2_2" target="_blank"> here</a>.
+Recall that in the previous section we generated the files:
+
+ - *tool.txt*
+ - *envelope.txt*
+ - *rotation_2.000.txt*
+ - *char_100_whole.txt*
+ - *time_curve_whole.txt*
+
+You can see in the file *Example/C1_Regular.pov* that
+to give a shiny look to the tool and the envelope we defined the
+<a href="https://www.povray.org/documentation/view/3.6.0/79/" target="_blank"> finish</a>:
+
+    #declare MyFinish = finish { 
+      ambient .6
+      diffuse .6
+      phong 0.4
+      phong_size 40
+    }
+
+Following the C++ tradition, we declared the objects before using them.
+We declare the tool as a lathe object:
+
+    #declare Tool = union {
+      lathe {
+        bezier_spline
+        #include "tool.txt"
+        texture{
+          pigment { color rgbf<94/255,119/255,3/255, 0> }
+          finish { MyFinish }
+        }
+        sturm
+      }
+    }
+
+We needed the `sturm` keyword to avoid oddities in the tool.
+
+The envelope is declared as a mesh:
+
+    #declare Envelope = mesh {
+      #include "envelope.txt"
+    }
+
+If you inspect *envelope.txt*, you will see the macro *smooth_quad*, which
+is defined in *Example/MyMacros.inc*.
+This macro merges two smooth triangles into a "smooth square".
+
+We include the following code at the end of *C1_Regular.pov*
+to place the tool and the envelope in the picture:
+
+    object {
+      Envelope
+      texture {
+        pigment { color rgb<106/255,125/255,142/255> }
+        finish { MyFinish }
+      }
+    }
+
+    object {
+      Tool
+      #include "rotation_2.000.txt"
+    }
+
+The characteristic curve at time $t=1$ and the streamline at tool height $l=0$
+are included with the following code:
+
+    #include "char_100_whole.txt"
+    curve(-0.4, 0.4, 8e-3, 1e-3, <255/255,0/255,0/255>)
+
+    #include "time_curve_whole.txt"
+    curve(0, 2, 8e-3, 1e-3, <255/255,0/255,0/255>)
+
+The macro `curve` is defined in *MyMacros.inc*.
+
+To render the image, open a terminal in the directory *Example* and type:
+
+    povray C1_Regular.pov MySettings.ini
+
+## About the Envelope class
 
 ## References
 
