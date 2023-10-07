@@ -29,7 +29,7 @@ I will use the notation and concepts in it without further notice.
 
 Figure 9 was rendered using <a href="http://www.povray.org/" target="_blank"> POV-Ray </a>,
 and the parameterization of the different geometrical objects was done with Matlab.
-The code has been uploaded to BCAM's GitLab, and from now on
+The code has been uploaded to  <a href="https://gitlab.bcamath.org/fponce/envelopes-solids-of-revolutions/-/tree/main" target="_blank"> BCAM's GitLab </a>, and from now on
 I will refer to the files as found there.
 
 *Note:* The code was tested only in Ubuntu.
