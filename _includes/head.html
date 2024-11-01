@@ -21,11 +21,19 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script>
   window.MathJax = {
+    // loader: {load: ['[tex]/textmacros']},
     tex: {
       inlineMath: [['$', '$'], ['\\(', '\\)']],
       displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      // packages: {
+      //   '[+]': ['braket']
+      // },
       macros: {
         R: '\\mathbb{R}',
+        C: '\\mathbb{C}',
+        re: "\\mathrm{Re}",
+        im: "\\mathrm{Im}",
+        diag: '\\mathrm{diag}',
         bold: ["\\boldsymbol{#1}", 1]
       }
     }
