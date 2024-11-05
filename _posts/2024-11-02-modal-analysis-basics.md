@@ -54,8 +54,8 @@ $$
 \end{equation}
 $$
 
-but by the symmetry of $B$ we can find an orthonormal basis of real vectors $\\{y_k\\}_{k=1,\ldots, N}$ with eigenvalues $\\{\omega_k^2 \\}$.
-In the original system of coordinates, the eigenvalues are $\phi_k := \Psi y_k$,
+but by the symmetry of $B$ we can find an orthonormal basis of real vectors $\\{\eta_k\\}_{k=1,\ldots, N}$ with eigenvalues $\\{\omega_k^2 \\}$.
+In the original system of coordinates, the eigenvalues are $\phi_k := \Psi \eta_k$,
 and they satisfy $\phi_l^t M \phi_k = \delta _{kl}$, where
 $\delta _{kl}$ is the Kronecker delta;
 it is said that the basis $\\{\phi_k\\}$ is mass-normalized and has units $1/\sqrt{\mathrm{kg}}$.
@@ -63,7 +63,9 @@ it is said that the basis $\\{\phi_k\\}$ is mass-normalized and has units $1/\sq
 ### Proportional damping
 
 If the symmetric matrices $A$ and $B$ are mutually diagonalizable, that is,
-if there is an orthonormal matrix $Q$ such that $Q^tAQ$ and $Q^t BQ$ are diagonal, then writing $q := Q^ty$ we can further decouple the damped system into the $N$ independent equations
+if there is an orthonormal matrix $H = (\eta_1, \ldots, \eta_N)$ such that $H^tAH$ and $H^t BH$ are diagonal, then
+writing $y = q_1\eta_1 + \cdots + q_N\eta_N$
+we can further decouple the damped system into the $N$ independent equations
 
 $$
 \begin{equation}
@@ -71,7 +73,8 @@ $$
 \end{equation}
 $$
 
-where $\zeta_k$ is called the damping ration.
+where $\zeta_k$ is called the damping ratio.
+The mode shapes in the original coordinate system are again $\phi_k := \Psi \eta_k$, which are real vectors.
 In this case, it is said that the damping is proportional, and
 it is a common and convenient assumption about the matrix $C$.
 
@@ -104,7 +107,7 @@ A more detailed account of these results can be found in {% cite cuaghey65 %}.
 
 In the general case of \eqref{eq:basic_vibration},
 we can still look for solutions of the form $e^z\phi$,
-for $z \in \C$ and $\phi \in \C^N$ (mode shapes), with $\re(z) \le 0$.
+where $z \in \C$ are complex frequencies and $\phi \in \C^N$ are mode shapes.
 If we replace $e^z\phi$ in \eqref{eq:basic_vibration} we get
 
 $$
@@ -117,21 +120,166 @@ An equivalent problem is to find the eigenvalues and eigenvectors of
 
 $$
 \begin{equation}
-    \Lambda :=
+    \Omega :=
     \begin{bmatrix}
         0 & I \\
-        -M^{-1}K & M^{-1}C
+        -M^{-1}K & -M^{-1}C
     \end{bmatrix}.
-    \tag{3}\label{eq:def_Lambda}
+    \tag{3}\label{eq:def_Omega}
 \end{equation}
 $$
 
-In fact, if $z$ and $\phi$ satisfy \eqref{eq:undamped_quad}, then $(\phi, z\phi)^t$ is an eigenvector of $\Lambda$ with eigenvalue $z$.
+In fact, if $z$ and $\phi$ satisfy \eqref{eq:undamped_quad}, then $(\phi, z\phi)^t$ is an eigenvector of $\Omega$ with eigenvalue $z$.
 It is not hard to see that all the eigenvectors have this form.
+
+Since the system matrices are real, then for each eigenvector $(\phi, z\phi)^t$
+the vector $(\bar{\phi}, \bar{z}\bar{\phi})^t$ is also an eigenvector.
+Hence, for definiteness, we add to the complex frequencies $z$ the condition $\im(z) > 0$, because
+the other eigenvector is obtained by conjugation;
+under our hypotheses about the system (*i.e.* symmetric, positive-definite matrices), $\im(z) \neq 0$.
+We will assume that the mode shapes $\\{\phi_k\\}_k$ form a basis of $\C^N$,
+which is true for a generic system (*i.e.*, it is false for set of measure zero).
+
+In general, if $A$ is a matrix and $U = (u_1, \ldots, u_N)$ are the eigenvectors,
+then $AU = U\Lambda$, where $\Lambda := \diag(\lambda_1,\ldots,\lambda_N)$ are the eigenvalues.
+Then, let us group the mode shapes and eigenvalues into the matrices $\Phi := (\phi_1, \ldots, \phi_N)$ and $Z := \diag(z_1, \ldots, z_N)$.
+In this way,
+
+$$
+\begin{equation}
+    \Omega
+    \begin{bmatrix}
+    \Phi & \bar{\Phi} \\
+    \Phi Z & \bar{\Phi}\bar{Z}
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+    \Phi & \bar{\Phi} \\
+    \Phi Z & \bar{\Phi}\bar{Z}
+    \end{bmatrix}
+    \begin{bmatrix}
+        z & \\
+         & \bar{z}
+    \end{bmatrix},
+\end{equation}
+$$
+
+or taking inverse at both sides
+
+$$
+\begin{equation}
+    \begin{bmatrix}
+    \Phi & \bar{\Phi} \\
+    \Phi Z & \bar{\Phi}\bar{Z}
+    \end{bmatrix}^{-1}
+    \Omega
+    \begin{bmatrix}
+    \Phi & \bar{\Phi} \\
+    \Phi Z & \bar{\Phi}\bar{Z}
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        z & \\
+         & \bar{z}
+    \end{bmatrix},
+\end{equation}
+$$
+
+so we have diagonalized $\Omega$.
+Hence, it is interesting to see if we can find a more
+transparent expression for the inverse appearing in the formula.
+
+Considering again the general case $AU = U\Lambda$,
+we can deduce that $U^{-1}A = \Lambda U^{-1}$, and then
+transposing we get $A^tU^{-t} = U^{-t}\Lambda$.
+This means that the columns of $U^{-t}$ are eigenvectors of $A^t$, so
+if we solve the spectral problem for $A^t$ and find $V$ such that $A^tV = V\Lambda$,
+we would conclude that $U^{-t} = Vd$, where $d$ is a diagonal matrix, and
+we would get our desired expression for the inverse of $U$, that is, $U^{-1} = dV^t$.
+
+If we apply the above arguments to $A = \Omega$,
+then we must solve the spectral problem for
+
+$$
+\begin{equation}
+    \Omega^t =
+    \begin{bmatrix}
+        0 & -KM^{-1} \\
+        I & -CM^{-1}
+    \end{bmatrix}.
+\end{equation}
+$$
+
+It is not hard to see that the eigenvectors $v$ have the form
+
+$$
+\begin{equation}
+    \begin{bmatrix}
+        -K\phi \\ z M\phi
+    \end{bmatrix},
+    \qquad\text{where }
+    \phi \text{ satisfies (2).}
+\end{equation}
+$$
+
+Hence, in this case the matrix of eigenvectors is
+
+$$
+\begin{equation}
+    V =
+    \begin{bmatrix}
+        -K & \\
+         & M
+    \end{bmatrix}
+    \begin{bmatrix}
+    \Phi & \bar{\Phi} \\
+    \Phi Z & \bar{\Phi}\bar{Z}
+    \end{bmatrix}
+    \qquad\text{and}\qquad
+    \begin{bmatrix}
+    \Phi & \bar{\Phi} \\
+    \Phi Z & \bar{\Phi}\bar{Z}
+    \end{bmatrix}^{-1}
+    =
+    dV^t,
+\end{equation}
+$$
+
+so we only have to determine the diagonal matrix $d$.
+For that, notice that
+
+$$
+\begin{align}
+    d^{-1} =
+    \begin{bmatrix}
+    \Phi & \bar{\Phi} \\
+    \Phi Z & \bar{\Phi}\bar{Z}
+    \end{bmatrix}^t
+    V
+    =
+    \begin{bmatrix}
+        -\Phi^t K\Phi + Z\Phi^tM\Phi Z & -\Phi^tK\bar{\Phi} + Z\Phi^tM\bar{\Phi}\bar{Z} \\
+        -\bar{\Phi}^tK\Phi + \bar{Z}\bar{\Phi}^tM\Phi Z & -\bar{\Phi}^t K\bar{\Phi} + \bar{Z}\bar{\Phi}^tM\bar{\Phi} \bar{Z}
+    \end{bmatrix}.
+\end{align}
+$$
+
+Incidentally, this expression also provides us with important orthogonality relations
+for the mode shapes.
+From $-\bar{\Phi}^tK\Phi + \bar{Z}\bar{\Phi}^tM\Phi Z = 0$ we get
+
+$$
+\begin{equation}
+    \bar{z}_iz_j = \frac{\bar{\phi}_i^tK\phi_j}{\bar{\phi}_i^tM\phi_j},
+    \qquad\text{for every } i, j = 1,\ldots, N.
+\end{equation}
+$$
+
+### Real Model Shapes
 
 We saw above that for undamped systems ($C = 0$),
 it is possible to choose the mode shapes $\phi \in \R^N$.
-Moreover, we can show that *if all the mode shapes are real and no eigenvalue is real, then $C = 0$,*
+Moreover, we can show that *if all the mode shapes are real, then $C = 0$,*
 so when $C \neq 0$ at least one mode shape must be complex.
 
 To see that real mode shapes imply $C = 0$,
@@ -147,11 +295,11 @@ $$
 \end{equation}
 $$
 
-are the eigenvectors of $\Lambda$, so
+are the eigenvectors of $\Omega$, so
 
 $$
 \begin{equation}
-    \Lambda
+    \Omega
     \begin{bmatrix}
     \Phi & \Phi \\
     \Phi Z & \Phi\bar{Z}
@@ -193,7 +341,7 @@ then
 
 $$
 \begin{align}
-    \Lambda &=
+    \Omega &=
     \frac{i}{2}
     \begin{bmatrix}
     \Phi & \Phi \\
@@ -219,7 +367,7 @@ $$
 \end{align}
 $$
 
-Comparing this expression with the definition of $\Lambda$ in \eqref{eq:def_Lambda},
+Comparing this expression with the definition of $\Omega$ in \eqref{eq:def_Omega},
 we see that
 
 $$
