@@ -254,7 +254,7 @@ $$
 \end{equation}
 $$
 
-so we only remains to fix the diagonal matrix $d$.
+so it only remains to fix the diagonal matrix $d$.
 For that, notice that
 
 $$
