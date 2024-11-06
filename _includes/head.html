@@ -21,13 +21,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script>
   window.MathJax = {
-    // loader: {load: ['[tex]/textmacros']},
     tex: {
       inlineMath: [['$', '$'], ['\\(', '\\)']],
       displayMath: [['$$', '$$'], ['\\[', '\\]']],
-      // packages: {
-      //   '[+]': ['braket']
-      // },
+      tags: 'ams',
       macros: {
         R: '\\mathbb{R}',
         C: '\\mathbb{C}',
@@ -43,7 +40,9 @@
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
   </script>
   <!-- Google Analytics -->
-  {% include google-analytics.html %}
+  {% if jekyll.environment == 'production' %}
+    {% include google-analytics.html %}
+  {% endif %}
   <!-- Use Jekyll SEO plugin -->
   {% seo %}
 </head>
