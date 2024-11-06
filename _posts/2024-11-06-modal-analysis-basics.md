@@ -200,7 +200,7 @@ Considering again the general case $TU = U\Lambda$,
 we can deduce that $U^{-1}T = \Lambda U^{-1}$, and then
 transposing we get $T^tU^{-t} = U^{-t}\Lambda$.
 This means that the columns of $U^{-t}$ form a basis of eigenvectors of $T^t$.
-Hence, if we solve the spectral problem for $A^t$ and find $V$ such that $T^tV = V\Lambda$,
+Hence, if we solve the spectral problem for $T^t$ and find $V$ such that $T^tV = V\Lambda$,
 then we could conclude that $U^{-t} = Vd$, where $d$ is a diagonal matrix, and
 we would get our desired expression for the inverse of $U$, that is, $U^{-1} = dV^t$.
 
