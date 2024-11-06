@@ -360,7 +360,7 @@ which implies
 
 $$
 \begin{align*}
-    &\im\Big(\Phi\frac{1}{Z\im(Z)}\Phi^t\Big) = K^{-1}, \\
+    &\im\Big(\Phi\frac{-1}{Z\im(Z)}\Phi^t\Big) = K^{-1}, \\
     &\im\Big(\Phi\frac{Z}{\im(Z)}\Phi^t\Big) = M^{-1}, \quad\text{and} \\
     &\im\Big(\Phi\frac{1}{\im(Z)}\Phi^t\Big) = 0.
 \end{align*}
