@@ -343,12 +343,12 @@ $$
 ### Real Mode Shapes
 
 For a general system, the mode shapes are complex, but
-we have seen that for undamped systems ($C = 0$)
+we have seen that for proportional damping
 it is possible to choose the mode shapes in $\R^N$.
-We will show that, conversely, *if all the mode shapes are real, then $C = 0$,*
-so when $C \neq 0$ at least one mode shape must be complex.
+We will show that, conversely, *if all the mode shapes are real, then the damping is proportional,*
+so when $[M^{-1}K, M^{-1}C] \neq 0$ at least one mode shape must be complex.
 
-To see that real mode shapes imply $C = 0$,
+To see that real mode shapes imply proportional damping,
 we notice that for real mode shapes we can find another expression for the inverse \eqref{mab:eq:final_inverse} more directly as
 
 $$
@@ -413,7 +413,6 @@ $$
 
 These two matrices commute as in \eqref{mab:eq:commutativity}, so
 the damping is proportional.
-Hence, proportional damping is equivalent to all mode shapes being real.
 
 ## Appendix
 
