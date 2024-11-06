@@ -19,24 +19,27 @@ $F$ are external forces,
 $M$ is the mass, $C$ is the damping, and $K$ is the stiffness.
 The dimension $N$ is referred to as the number of Degrees of Freedom (DoF).
 
-$M$ and $K$ are usually real, symmetric, positive-definite matrices.
-This can be justified using the lagrangian formulation of a system of oscillators and
+$M$, $C$, and $K$ are usually real, symmetric, positive-definite matrices, so
+we will impose these hypotheses as well.
+This can be justified using the lagrangian formulation for a system of oscillators, and then
 approximating the dynamics to first order, in which case
 $M$ and $K$ are jacobian matrices;
-however, see Section 2.8 in {% cite ewins00 %}.
-$C$ is usually hard to model, and we will impose some conditions on it
-for mathematical convenience, but not physically motivated.
+however, see Section 2.8 in {% cite ewins00 %} for non-symmetric examples.
+$C$ is usually hard to model, and oftentimes conditions on it are imposed
+for mathematical convenience, but not for physical motivation.
 
 ### Resonances
 
-A resonance is a function $e^{i\omega t}\phi$ that solves the homogenous system \eqref{eq:basic_vibration} with $C = 0$,
-where $\omega > 0$ and $\phi \in \C^N$ is a constant vector,
-which are called resonance frequency and mode shape, respectively.
+A resonance is a function $e^{i\omega t}\phi$, for $\omega > 0$ and $\phi \in \C^N$,
+that solves the homogenous system \eqref{eq:basic_vibration} with $C = 0$.
+The number $\omega$ is referred to as a natural frequency, and
+$\phi$ as a mode shape of the undamped system.
 The system \eqref{eq:basic_vibration} always has a full basis of $N$ resonances.
 
 To find the resonances, notice that by the symmetry of $M$ there is an orthonormal matrix $U$ such that $U^t M U = \diag(m_1, \ldots, m_N)$.
 If we rescale it as $\Psi := U\diag(1 / \sqrt{m_1}, \ldots, 1/\sqrt{m_N})$,
 then $\Psi^t M \Psi = I$.
+
 Now, let us write $y := \Psi^{-1} x$ and multiply \eqref{eq:basic_vibration} by $\Psi^t$ to get
 
 $$
@@ -46,7 +49,7 @@ $$
 $$
 
 where $A := \Psi^t C \Psi$ and $B := \Psi^t K \Psi$.
-Since we are assuming that $A = 0$ (undamped system), we have to find solutions of the system
+Since we are assuming that $A = 0$ (undamped system), we must find solutions of the system
 
 $$
 \begin{equation*}
@@ -82,17 +85,19 @@ When is the damping proportional?
 Two symmetric matrices are mutually diagonalizable if and only if
 $[A, B] := AB - AB = 0$; see Theorem A in the Appendix.
 In terms of $C$ and $K$, this is $C\Psi\Psi^t K = K\Psi\Psi^t C$.
-Since $M^{-1} = \Psi \Psi^t$, we can re-write the last expression in the most common form
+Since $M^{-1} = \Psi \Psi^t$, then proportional damping is equivalent to
 
 $$
 \begin{equation}
-    (M^{-1}C)(M^{-1}K) = (M^{-1}K)(M^{-1}C).
+    (M^{-1}C)(M^{-1}K) = (M^{-1}K)(M^{-1}C);
     \label{mab:eq:commutativity}
 \end{equation}
 $$
 
+see Section 2.5 in {% cite ewins00 %} for further discussion.
+
 If the matrix $A$ commutes with the symmetric matrix $B$, and
-all the eigenvalues of $B$ are distinct, then $A = \sum_{j=0}^n c_jB^j$ for
+all the eigenvalues (natural frequencies) of $B$ are distinct, then $A = \sum_{j=0}^n c_jB^j$ for
 some $n$ and some coefficients $c_j$; see Theorem B in the Appendix.
 Again, in terms of $C$ and $K$ we end up with the known formula
 
@@ -107,9 +112,9 @@ A more detailed account of these results can be found in {% cite cuaghey65 %}.
 ### Non-proportional damping
 
 In the general case of \eqref{eq:basic_vibration},
-we can still look for solutions of the form $e^z\phi$,
+we can still look for solutions of the form $e^{zt}\phi$,
 where $z \in \C$ are complex frequencies and $\phi \in \C^N$ are mode shapes.
-If we replace $e^z\phi$ in \eqref{eq:basic_vibration} we get
+If we replace $e^{zt}\phi$ in \eqref{eq:basic_vibration} we get
 
 $$
 \begin{equation}
@@ -131,7 +136,7 @@ $$
 $$
 
 In fact, if $z$ and $\phi$ satisfy \eqref{eq:undamped_quad}, then $(\phi, z\phi)^t$ is an eigenvector of $\Omega$ with eigenvalue $z$.
-It is not hard to see that all the eigenvectors have this form.
+It is not hard to see that every eigenvector has this form.
 
 Since the system matrices are real, then for each eigenvector $(\phi, z\phi)^t$
 the vector $(\bar{\phi}, \bar{z}\bar{\phi})^t$ is also an eigenvector.
@@ -139,11 +144,14 @@ Hence, for definiteness, we add to the complex frequencies $z$ the condition $\i
 the other eigenvector is obtained by conjugation;
 under our hypotheses about the system (*i.e.* symmetric, positive-definite matrices), $\im(z) \neq 0$.
 We will assume that the mode shapes $\\{\phi_k\\}_k$ form a basis of $\C^N$,
-which is true for a generic system (*i.e.*, it is false for set of measure zero).
+which is true for a generic system --- *i.e.*, it is false for set of systems $(K, C, M)$ of measure zero.
 
-In general, if $A$ is a matrix and $U = (u_1, \ldots, u_N)$ are the eigenvectors,
-then $AU = U\Lambda$, where $\Lambda := \diag(\lambda_1,\ldots,\lambda_N)$ are the eigenvalues.
-Then, let us group the mode shapes and eigenvalues into the matrices $\Phi := (\phi_1, \ldots, \phi_N)$ and $Z := \diag(z_1, \ldots, z_N)$.
+In general, if $T$ is a matrix and $U = (u_1, \ldots, u_N)$ is a basis of eigenvectors,
+then $TU = U\Lambda$, where $\Lambda := \diag(\lambda_1,\ldots,\lambda_N)$ are the eigenvalues.
+The matrix $U$ is well-defined up to normalization. In fact,
+if $d$ is a diagonal matrix, then $Ud$ is also a basis of eigenvectors.
+
+Let us group the mode shapes and eigenvalues into the matrices $\Phi := (\phi_1, \ldots, \phi_N)$ and $Z := \diag(z_1, \ldots, z_N)$.
 In this way,
 
 $$
@@ -182,23 +190,21 @@ $$
     \begin{bmatrix}
         Z & \\
          & \bar{Z}
-    \end{bmatrix},
+    \end{bmatrix}.
 \end{equation*}
 $$
 
-so we have diagonalized $\Omega$.
-Hence, it is interesting to see if we can find a more
-transparent expression for the inverse appearing in the formula.
+It is useful to get a more transparent expression for the inverse matrix appearing in this formula.
 
-Considering again the general case $AU = U\Lambda$,
-we can deduce that $U^{-1}A = \Lambda U^{-1}$, and then
-transposing we get $A^tU^{-t} = U^{-t}\Lambda$.
-This means that the columns of $U^{-t}$ are eigenvectors of $A^t$, so
-if we solve the spectral problem for $A^t$ and find $V$ such that $A^tV = V\Lambda$,
-we would conclude that $U^{-t} = Vd$, where $d$ is a diagonal matrix, and
+Considering again the general case $TU = U\Lambda$,
+we can deduce that $U^{-1}T = \Lambda U^{-1}$, and then
+transposing we get $T^tU^{-t} = U^{-t}\Lambda$.
+This means that the columns of $U^{-t}$ form a basis of eigenvectors of $T^t$.
+Hence, if we solve the spectral problem for $A^t$ and find $V$ such that $T^tV = V\Lambda$,
+then we could conclude that $U^{-t} = Vd$, where $d$ is a diagonal matrix, and
 we would get our desired expression for the inverse of $U$, that is, $U^{-1} = dV^t$.
 
-If we apply the above arguments to $A = \Omega$,
+If we apply the above arguments to $T = \Omega$,
 then we must solve the spectral problem for
 
 $$
@@ -215,14 +221,16 @@ It is not hard to see that the eigenvectors $v$ have the form
 
 $$
 \begin{equation*}
+    v =
     \begin{bmatrix}
         -K\phi \\ z M\phi
     \end{bmatrix},
 \end{equation*}
 $$
-where $\Phi$ satisfies \eqref{eq:undamped_quad}.
 
-Hence, in this case the matrix of eigenvectors is
+where $\phi$ satisfies \eqref{eq:undamped_quad}.
+
+Therefore, a matrix of eigenvectors is
 
 $$
 \begin{equation}
@@ -246,7 +254,7 @@ $$
 \end{equation}
 $$
 
-so we only have to determine the diagonal matrix $d$.
+so we only remains to fix the diagonal matrix $d$.
 For that, notice that
 
 $$
@@ -332,7 +340,7 @@ $$
 \end{equation}
 $$
 
-### Real Model Shapes
+### Real Mode Shapes
 
 For a general system, the mode shapes are complex, but
 we have seen that for undamped systems ($C = 0$)
@@ -341,7 +349,7 @@ We will show that, conversely, *if all the mode shapes are real, then $C = 0$,*
 so when $C \neq 0$ at least one mode shape must be complex.
 
 To see that real mode shapes imply $C = 0$,
-we notice that for real mode shapes we can find another expression of the inverse \eqref{mab:eq:final_inverse} more directly as
+we notice that for real mode shapes we can find another expression for the inverse \eqref{mab:eq:final_inverse} more directly as
 
 $$
 \begin{equation*}
@@ -392,14 +400,14 @@ $$
 \end{equation*}
 $$
 
-Using these formulae in \eqref{eq:undamped_quad} we see as well that $\Phi^t C\Phi = -2\re(Z)$.
+Plugging in these formulae in \eqref{eq:undamped_quad} we see as well that $\Phi^t C\Phi = -2\re(Z)$.
 Therefore,
 
 $$
 \begin{equation*}
     M^{-1}K = \Phi \lvert Z\rvert^2 \Phi^{-1}
     \qquad\text{and}\qquad
-    M^{-1}C = -2\Phi \re(Z)\Phi^{-1}
+    M^{-1}C = -2\Phi \re(Z)\Phi^{-1}.
 \end{equation*}
 $$
 
@@ -422,7 +430,7 @@ there exists a common basis that diagonalizes both matrices.
 
 It is not hard to see that mutually diagonalizable matrices commute.
 
-Let $\\{\lambda_k\\}_k$ be the distinct eigenvalues of $A$, and $V_k$ the corresponding subspaces of eigenvectors.
+Conversely, let $\\{\lambda_k\\}_k$ be the distinct eigenvalues of $A$, and $V_k$ the corresponding subspaces of eigenvectors.
 Then, for $v \in V_k$ we have
 
 $$
@@ -436,12 +444,12 @@ Since $B$ is also diagonalizable, we can partition each
 $V_k = W_{k1} + \cdots + W_{kl_k}$ into subspaces of eigenvectors of $B$.
 Hence, a basis of vectors $\\{\psi_k\\}$ with $\psi_k \in W_{ij}$ diagonalizes both operators. $$\Box$$
 
-If the eigenvalues of one of the matrices are distinct, then
+If the eigenvalues of one of the matrices are all distinct, then
 it implies that the other matrix is diagonalizable as well.
 
 **Theorem B**
 
-Let $A$ be a diagonalizable matrix with distinct eigenvalues.
+Let $A$ be a diagonalizable matrix with all eigenvalues distinct.
 Then, $[A, B] = 0$ if and only if $B = p(A)$ for some polynomial $p$.
 
 *Proof*
