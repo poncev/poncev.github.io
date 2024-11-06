@@ -340,6 +340,32 @@ $$
 \end{equation}
 $$
 
+We can get additional interesting relationships using
+
+$$
+\begin{equation*}
+    \begin{bmatrix}
+    \Phi & \bar{\Phi} \\
+    \Phi Z & \bar{\Phi}\bar{Z}
+    \end{bmatrix}
+    \begin{bmatrix}
+    \Phi & \bar{\Phi} \\
+    \Phi Z & \bar{\Phi}\bar{Z}
+    \end{bmatrix}^{-1}
+    = I
+\end{equation*},
+$$
+
+which implies
+
+$$
+\begin{align*}
+    &\im\Big(\Phi\frac{1}{Z\im(Z)}\Phi^t\Big) = K^{-1}, \\
+    &\im\Big(\Phi\frac{Z}{\im(Z)}\Phi^t\Big) = M^{-1}, \quad\text{and} \\
+    &\im\Big(\Phi\frac{1}{\im(Z)}\Phi^t\Big) = 0.
+\end{align*}
+$$
+
 ### Real Mode Shapes
 
 For a general system, the mode shapes are complex, but
@@ -400,7 +426,7 @@ $$
 \end{equation*}
 $$
 
-Plugging in these formulae in \eqref{eq:undamped_quad} we see as well that $\Phi^t C\Phi = -2\re(Z)$.
+Plugging these formulae into \eqref{eq:undamped_quad} we see as well that $\Phi^t C\Phi = -2\re(Z)$.
 Therefore,
 
 $$
@@ -424,7 +450,6 @@ Let $A$ and $B$ be two diagonalizable matrices.
 Then, $[A, B] = 0$ if and only if
 there exists a common basis that diagonalizes both matrices.
 
- 
 *Proof*
 
 It is not hard to see that mutually diagonalizable matrices commute.
