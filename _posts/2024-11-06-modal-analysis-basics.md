@@ -142,7 +142,7 @@ Since the system matrices are real, then for each eigenvector $(\phi, z\phi)^t$
 the vector $(\bar{\phi}, \bar{z}\bar{\phi})^t$ is also an eigenvector.
 Hence, for definiteness, we add to the complex frequencies $z$ the condition $\im(z) > 0$, because
 the other eigenvector is obtained by conjugation;
-under our hypotheses about the system (*i.e.* symmetric, positive-definite matrices), $\im(z) \neq 0$.
+if the damping is small, then $\im(z) \neq 0$.
 We will assume that the mode shapes $\\{\phi_k\\}_k$ form a basis of $\C^N$,
 which is true for a generic system --- *i.e.*, it is false for set of systems $(K, C, M)$ of measure zero.
 
