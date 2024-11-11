@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Modal Analysis: testing"
+title: "Modal Analysis: dynamics"
 author: "Felipe Ponce-Vanegas"
 categories: general
 tags: [modal analysis]
