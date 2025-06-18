@@ -39,22 +39,36 @@ and
 <a href="https://scholar.google.com/citations?user=8QupxaoAAAAJ&hl=en" target="_blank"> Germán Fonseca</a>.
 My thesis was on the problem of restriction of the Fourier transform, and
 it is available in
-<a href="https://repositorio.unal.edu.co/handle/unal/63368" target="_blank"> this link. </a>
+<a href="https://repositorio.unal.edu.co/handle/unal/63368" target="_blank"> this link</a>.
+The main result of my thesis was a sharp estimation for a trilinear restriction inequality for the saddle;
+see [here](#phd).
 
 ## My initial work at BCAM
 
+I was initially hired by BCAM to work with <a href="https://www.ikerbasque.net/es/pedro-caro" target="_blank"> Pedro Caro</a>.
+I started applying restriction theory to inverse problems, and
+then one of my main interests was the problem of pointwise convergence of solutions of dispersive equations to the initial data; see, for example, [this paper](#fractalD).
+In general, I worked on analysis and PDEs, but
+gradually my interests began to shift towards applied mathematics.
+My last event within the Analysis community was at Oberwolfach (3 July -- 9 July, 2022).
 
 ## Current interests
 
-Check out this <a href="https://gitlab.bcamath.org/fponce/git-for-mathematicians/-/tree/main" target="_blank"> git course </a> I gave at BCAM.
+Nowadays, I work in modelling and monitoring of manufacturing processes.
+In general, I try to pay attention to all the problems engineers pose to me, or I notice.
+For example, how to avoid undesirable tool vibrations during cutting processes.
+
+Also, check out this <a href="https://gitlab.bcamath.org/fponce/git-for-mathematicians/-/tree/main" target="_blank"> git course </a> I gave at BCAM.
 
 ## List of papers
 
-1. with Irastorza, M. (2026).
+1. <a id="tustin"></a>
+with Irastorza, M. (2026).
 The Tustin Method for approximating eigenvalues of delay systems.
 *J. Comput. Appl. Math.*, 472, 116772. <https://doi.org/10.1016/j.cam.2025.116772>.
+<a href="https://gitlab.bcamath.org/mirastorza/Semi-discretization_and_the_Tustin_method" target="_blank"> Repo</a>.
    
-2. <a id="bizzarri"></a>
+1. <a id="bizzarri"></a>
 with Bizzarri, M., & Barton, M. (2023).
 On $C^0$ and $C^1$ continuity of envelopes of rotational solids and its application to 5-axis CNC machining.
 *CAGD*, 107, 102245. <https://doi.org/10.1016/j.cagd.2023.102245>. <a href="{{ site.url }}/pdfs/Envelope_regularity.pdf" target="_blank"> Preprint </a> and <a href="https://gitlab.bcamath.org/fponce/envelopes-solids-of-revolutions" target="_blank"> repo</a>.
@@ -65,7 +79,7 @@ Counterexamples for the fractal Schrödinger convergence problem with an Interme
 *Commun. Pure Appl.*, 21(11), 3777--3812. <https://doi.org/10.3934/cpaa.2022122>. 
 <a href="https://arxiv.org/abs/2112.04050" target="_blank"> Preprint</a>.
 
-1. <a id="factalD"></a>
+1. <a id="fractalD"></a>
 with Eceizabarrena, D., (2022).
 Pointwise convergence over fractals for dispersive equations with homogeneous symbol.
 *J. Math. Anal. Appl.*, 515, 126385. <https://doi.org/10.1016/j.jmaa.2022.126385>.
@@ -92,7 +106,7 @@ with Kumar, S., & Vega, L., (2022). Static and dynamical, fractional uncertainty
 1. <a id="phd"></a>
 (2020). A Trilinear Restriction Estimate for the Hyperbolic Paraboloid
 with Sharp Dependence on Transversality.
-*Int. Math. Res. Not.*, 2020(18), 5723--5753. <https://doi.org/10.1093/imrn/rny178>
+*Int. Math. Res. Not.*, 2020(18), 5723--5753. <https://doi.org/10.1093/imrn/rny178>.
 
 1. <a id="decay"></a>
 (2018). Examples of measures with slow decay of the spherical means of the Fourier transform.
