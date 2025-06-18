@@ -7,14 +7,14 @@ disqus:
 google-ID: 'G-WHP9JPYXNX'
 
 menu:
-- {name: 'About',   url: 'about.html'}
+- {name: 'About me',   url: 'about.html'}
 - {name: 'Writing', url: 'writing.html'}
 
 # Available social icons are powered by Font Awesome, so you can use any icon that they offer
 social:
 - {icon: 'github',     link: 'https://www.github.com/poncev'}
 - {icon: 'linkedin',   link: 'https://www.linkedin.com/in/felipe-ponce-b05aab238/'}
-- {icon: 'envelope',   link: 'mailto:feponcev@gmail.com'}
+- {icon: 'envelope',   link: 'mailto:fponce@bcamath.org'}
 # - {icon: 'rss-square', link: '/rss-feed.xml'}
 
 # Customize site text
