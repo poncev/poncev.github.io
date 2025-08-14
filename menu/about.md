@@ -45,9 +45,9 @@ see [here](#phd).
 
 ## My initial work at BCAM
 
-I was initially hired by BCAM to work with <a href="https://www.ikerbasque.net/es/pedro-caro" target="_blank"> Pedro Caro</a>.
-I started applying restriction theory to inverse problems, and
-then one of my main interests was the problem of pointwise convergence of solutions of dispersive equations to the initial data; see, for example, [this paper](#fractalD).
+I was initially hired by BCAM to work with <a href="https://www.ikerbasque.net/es/pedro-caro" target="_blank"> Pedro Caro</a>,
+and I started my job applying restriction theory to inverse problems.
+Later, I got interested in the problem of pointwise convergence of solutions of dispersive equations to the initial data; see, for example, [this paper](#fractalD).
 In general, I worked on analysis and PDEs, but
 gradually my interests began to shift towards applied mathematics.
 My last event within the Analysis community was at Oberwolfach (3 July -- 9 July, 2022).
@@ -67,8 +67,19 @@ with Irastorza, M. (2026).
 The Tustin Method for approximating eigenvalues of delay systems.
 *J. Comput. Appl. Math.*, 472, 116772. <https://doi.org/10.1016/j.cam.2025.116772>.
 <a href="https://gitlab.bcamath.org/mirastorza/Semi-discretization_and_the_Tustin_method" target="_blank"> Repo</a>.
-   
-1. <a id="bizzarri"></a>
+
+1. <a id="andras_semi"></a>
+with Bartfai, A., Hogan, J., Kuske, R., & Dombovari, Z. (2025).
+Semi-analytical framework for the study of finite-time stability of forced dynamical systems with slowly varying parameters.
+*J. Sound Vib.*, 618, 119359. <https://doi.org/10.1016/j.jsv.2025.119359>.
+
+1. <a id="my_semi"></a>
+with Bartfai, A., & Dombovari, Z. (2025).
+Semi-analytical Estimation for the Escape of Solutions of Linear Differential Equations with Slowly Varying Coefficients.
+*SIAM J. Appl. Math.*, 85(4), 1519--1549. <https://doi.org/10.1137/24M1685481>.
+<a href="https://gitlab.bcamath.org/fponce/variable-coefficients" target="_blank"> Repo</a>.
+
+2. <a id="bizzarri"></a>
 with Bizzarri, M., & Barton, M. (2023).
 On $C^0$ and $C^1$ continuity of envelopes of rotational solids and its application to 5-axis CNC machining.
 *CAGD*, 107, 102245. <https://doi.org/10.1016/j.cagd.2023.102245>. <a href="{{ site.url }}/pdfs/Envelope_regularity.pdf" target="_blank"> Preprint </a> and <a href="https://gitlab.bcamath.org/fponce/envelopes-solids-of-revolutions" target="_blank"> repo</a>.
