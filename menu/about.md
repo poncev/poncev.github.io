@@ -147,3 +147,9 @@ The Frisch--Parisi Formalism for Fluctuations of the Schrödinger Equation.
 In: Machihara, S. (eds) Mathematical Physics and Its Interactions. ICMPI 2021.
 Springer Proceedings in Mathematics & Statistics, vol 451. Springer, Singapore. <https://doi.org/10.1007/978-981-97-0364-7_7>.
 <a href="https://arxiv.org/abs/2202.06645" target="_blank"> Preprint</a>.
+
+## Former students
+
+1. Irastorza, M. (2024). *Numerical methods for delay differential equations*
+   [Bachelor's Thesis, University of the Basque Country].
+   <a href="{{ site.url }}/pdfs/2024_Markel_TFG_Tustin.pdf" target="_blank"> Thesis </a>
