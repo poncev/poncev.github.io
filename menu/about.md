@@ -142,10 +142,18 @@ with Lebedev, L., & Rendón, L. (2013). On Weak Solvability of Boundary Value Pr
 ### Conference papers
 
 1. <a id="frisch"></a>
+(2026).
+On complex mode shapes and their identification.
+In: Vehovszky, B. (eds), *Journal of Physics: Conference Series: vol 3190*
+*International Conference for Acoustic and Vibration Engineers* (pp 012009).
+IOP Publishing. <https://doi.org/10.1088/1742-6596/3190/1/012009>.
+
+2. <a id="frisch"></a>
 with Kumar, S., Roncal, L., & Vega, L., (2024).
 The Frisch--Parisi Formalism for Fluctuations of the Schrödinger Equation.
-In: Machihara, S. (eds) Mathematical Physics and Its Interactions. ICMPI 2021.
-Springer Proceedings in Mathematics & Statistics, vol 451. Springer, Singapore. <https://doi.org/10.1007/978-981-97-0364-7_7>.
+In: Machihara, S. (eds), *Springer Proceedings in Mathematics & Statistics: vol 451.*
+*Mathematical Physics and Its Interactions* (pp 199--223).
+Springer. <https://doi.org/10.1007/978-981-97-0364-7_7>.
 <a href="https://arxiv.org/abs/2202.06645" target="_blank"> Preprint</a>.
 
 ## Former students
