@@ -14,7 +14,7 @@ Bayes filter is a robust method for estimating the latent variable.
 
 ## Bayes filter
 
-For discrete times, we denote the latent variable by $x_k \in \R^n$ at time $k \in \Z$, and
+For discrete times, we denote the latent variable by $x_k \in \R^n$ at time $k = 1, \ldots$, and
 the observation by $y_k \in \R^m$.
 We can formulate the filtering problem as computing the conditional probability
 
@@ -31,7 +31,7 @@ By <a href="https://en.wikipedia.org/wiki/Bayes%27_theorem" target="_blank"> Bay
 $$
 \begin{align}
     p(x_k\mid y_{1:k}) &= \frac{1}{p(y_k\mid y_{1:k-1})}\,p(y_k\mid x_k, y_{1:k-1})p(x_k\mid y_{1:k-1}) \notag \\
-    &\propto p(y_k\mid x_k, y_{1:k-1})\,p(x_k\mid y_{1:k-1}).
+    &\propto p(y_k\mid x_k, y_{1:k-1})\,p(x_k\mid y_{1:k-1}). \label{eq:bayes}
 \end{align}
 $$
 
@@ -44,6 +44,7 @@ Hence,
 
 $$
 \begin{equation}
+    \label{eq:bayes_result}
     p(x_k\mid y_{1:k}) \propto p(y_k\mid x_k)\,p(x_k\mid y_{1:k-1}).
 \end{equation}
 $$
@@ -65,7 +66,6 @@ the target conditional probability in \eqref{eq:filter_problem} is
 
 $$
 \begin{equation}
-    \label{eq:bayes_result}
     p(x_k\mid y_{1:k}) \propto p(y_k\mid x_k) \int p(x_k \mid x_{k-1})\,p(x_{k-1} \mid y_{1:k-1})\,dx_{k-1}.
 \end{equation}
 $$
@@ -85,16 +85,21 @@ y_k &= H_k x_k + v_k,
 \end{align}
 $$
 
-where $F_k$ and $H_k$ are matrices, and
+where $F_k$ and $H_k$ are the transition and observation matrices, respectively, and
 the random effects are mutually independent normals $w_k \sim \mathcal{N}(0, Q_k)$ and $v_k \sim \mathcal{N}(0, R_k)$,
 where $Q_k$ and $R_k$ are the covariance matrices.
-These two equations provide us with the missing quantities at the end of the previous section $p(x_k \mid x_{k-1})$ and $p(y_k\mid x_k)$, respectively.
+These two equations provide us with the missing quantities at the end of the previous section $p(x_k \mid x_{k-1})$ and $p(y_k\mid x_k)$, respectively. 
+We also assume that the initial state $x_0$ is normally distributed,
+with mean $\hat{x}_0$ and covariance $P_0$.
 
 To compute $p(x_k \mid y_{1:k})$ in \eqref{eq:filter_problem},
 we will exploit the fact that a normal distribution is fully determined by its mean and covariance matrix.
 Inductively, let us assume that $p(x_{k-1} \mid y_{1:k-1})$ is normal, with mean $\hat{x}\_{k-1}$ and covariance $P_{k-1}$.
 
-We expand the integral in \eqref{eq:bayes_result} as
+### Prior density
+
+Let us start by computing the integral \eqref{eq:half-simplification},
+which we expand as
 
 $$
 \begin{multline}
@@ -106,8 +111,8 @@ $$
 
 where $\lvert Q_{k-1}\rvert$ is the determinant.
 Using the new variables $\Delta x_{k-1} := x_{k-1} - \hat{x}\_{k-1}$ and
-$\eta := x_{k} - F_{k-1}\hat{x}_{k-1}$
-Working out the exponent, we find that the above integral transforms into
+$\eta := x_{k} - F_{k-1}\hat{x}_{k-1}$, and
+working out the exponent, we find that the above integral transforms into
 
 $$
 \begin{multline}
@@ -138,25 +143,80 @@ $$
 Hence, the integral in \eqref{eq:big_integral} is proportional to
 
 $$
-\begin{equation}
-    \exp\Big(-\frac{1}{2}\eta^T(Q^{-1}_{k-1} - Q^{-1}_{k-1}F_{k-1}W_{k-1}F_{k-1}^TQ^{-1}_{k-1})\eta\Big)
-\end{equation}
+\begin{gather}
+    \exp\Big(-\frac{1}{2}\eta^T(P^-_k)^{-1}\eta\Big) \\
+    (P^-_k)^{-1} := Q^{-1}_{k-1} - Q^{-1}_{k-1}F_{k-1}W_{k-1}F_{k-1}^TQ^{-1}_{k-1}, \label{eq:prior_cov}
+\end{gather}
 $$
 
+where $P^-_k$ is known as the a priori estimate of the covariance matrix.
 
-Recall we are interested in \eqref{eq:bayes_result}, and
-the all this work was to get
-
-$$
-\begin{equation}
-    p(x_k\mid y_{1:k}) \propto p(y_k\mid x_k) \exp\Big[-\frac{1}{2}\eta^TA\eta\Big].
-\end{equation}
-$$
-
-Expanding now $p(y_k\mid x_k)$, we have that
+If the transition matrix $F_{k-1}$ is nonsingular, then
+we can reorganize \eqref{eq:prior_cov} to see that
 
 $$
 \begin{equation}
-    p(x_k\mid y_{1:k}) \propto \exp\Big[-\frac{1}{2}\big(v_k^TR_k^{-1}v_k + \eta^TA\eta\big)\Big].
+    P^-_k = F_{k-1}P_kF_{k-1}^T  + Q_{k-1}.
 \end{equation}
 $$
+
+When $F_{k-1}$ is singular the identity still holds, which
+can be seen using nonsingular perturbations of $F_{k-1}$.
+
+All in all, we conclude that the prior density is
+
+$$
+\begin{equation}
+    \label{eq:prior_estimate}
+    p(x_k\mid y_{1:k-1}) \propto \exp\Big(-\frac{1}{2}(x_{k} - \hat{x}^-_k)^T(P^-_k)^{-1}(x_{k} - \hat{x}^-_k)\Big),
+\end{equation}
+$$
+
+where $\hat{x}^-\_k := F_{k-1}\hat{x}\_{k-1}$ is the a priori estimate of the state at $k$.
+
+### Posterior density
+
+Recall that our goal is to show that the posterior density in \eqref{eq:bayes_result} is normal, and
+to find its mean and covariance.
+Using the prior density we have just found, we get
+
+$$
+\begin{equation}
+    p(x_k\mid y_{1:k}) \propto p(y_k\mid x_k) \exp\Big[-\frac{1}{2}\eta^T(P^-_k)^{-1}\eta\Big].
+\end{equation}
+$$
+
+Expanding the observation probability,
+
+$$
+\begin{equation}
+    p(x_k\mid y_{1:k}) \propto \exp\Big[-\frac{1}{2}\big(v_k^TR_k^{-1}v_k + \eta^T(P^-_k)^{-1}\eta\big)\Big].
+\end{equation}
+$$
+
+Doing the algebra, we have that
+
+$$
+\begin{gather}
+    p(x_k\mid y_{1:k}) \propto \exp\Big[-\frac{1}{2}(\eta - \theta)^TP_k^{-1}(\eta - \theta) \Big] \\
+    \theta := P_kH_k^TR_k^{-1}(y_k - H_kF_{k-1}\hat{x}_{k-1}) \\
+    P_k^{-1} := H_k^TR_k^{-1}H_k + (P^-_k)^{-1}
+\end{gather}_k
+$$
+
+This tells us that $p(x_k\mid y_{1:k})$ is a normal distribution with mean and covariance
+
+$$
+\begin{gather}
+    \hat{x}_k = \hat{x}_{k-1} + K_k(y_k - H_k\hat{x}_{k}^-) \\
+    P_k = (H_k^TR_k^{-1}H_k + (P^-_k)^{-1})^{-1},
+\end{gather}
+$$
+
+where $K_k := P_kH_k^TR_k^{-1}$ is known as the Kalman gain.
+
+For a more in depth account of the Kalman filter, I recommend the book {% cite simon_kalman %}.
+
+## References
+
+{% bibliography --cited %}
