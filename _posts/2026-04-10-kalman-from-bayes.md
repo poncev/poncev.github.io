@@ -9,14 +9,14 @@ tags: [bayesian statistics]
 An important problem in engineering is to estimate the evolution of a hidden (latent) variable,
 such as the trajectory of a rocket, from noisy observations.
 If the dynamics of the latent variable is known, and
-also the relationship between the latent variable and the observation, also called emission, then
-Bayes filter is a robust method for estimating the latent variable.
+also the relationship between the latent variable and the observation, then
+Bayes filtering is a robust method for estimating the latent variable.
 
 ## Bayes filter
 
-For discrete times, we denote the latent variable by $x_k \in \R^n$ at time $k = 1, \ldots$, and
+For discrete times $k = 1, \ldots$, we denote the latent variable by $x_k \in \R^n$ and
 the observation by $y_k \in \R^m$.
-We can formulate the filtering problem as computing the conditional probability
+We can formulate the filtering problem in terms of the conditional probability
 
 $$
 \begin{equation}
@@ -66,13 +66,13 @@ the target conditional probability in \eqref{eq:filter_problem} is
 
 $$
 \begin{equation}
+    \label{eq:prior-integral}
     p(x_k\mid y_{1:k}) \propto p(y_k\mid x_k) \int p(x_k \mid x_{k-1})\,p(x_{k-1} \mid y_{1:k-1})\,dx_{k-1}.
 \end{equation}
 $$
 
 The important conclusion here is that the central quantity $p(x_k\mid y_{1:k})$ can be expressed iteratively in terms of $p(x_{k-1}\mid y_{1:k-1})$, as long as
-we know the dynamics of the latent variable $p(x_k \mid x_{k-1})$, and
-the emission $p(y_k\mid x_k)$.
+we know the transition $p(x_k \mid x_{k-1})$ and emission $p(y_k\mid x_k)$ probabilities.
 
 ## Kalman filter
 
@@ -85,10 +85,10 @@ y_k &= H_k x_k + v_k,
 \end{align}
 $$
 
-where $F_k$ and $H_k$ are the transition and observation matrices, respectively, and
+where $F_{k-1}$ and $H_k$ are the transition and observation matrices, respectively, and
 the random effects are mutually independent normals $w_k \sim \mathcal{N}(0, Q_k)$ and $v_k \sim \mathcal{N}(0, R_k)$,
 where $Q_k$ and $R_k$ are the covariance matrices.
-These two equations provide us with the missing quantities at the end of the previous section $p(x_k \mid x_{k-1})$ and $p(y_k\mid x_k)$, respectively. 
+These two equations provide us with the missing quantities at the end of the previous section $p(x_k \mid x_{k-1})$ and $p(y_k\mid x_k)$.
 We also assume that the initial state $x_0$ is normally distributed,
 with mean $\hat{x}_0$ and covariance $P_0$.
 
@@ -98,18 +98,18 @@ Inductively, let us assume that $p(x_{k-1} \mid y_{1:k-1})$ is normal, with mean
 
 ### Prior density
 
-Let us start by computing the integral \eqref{eq:half-simplification},
+Let us start by computing the integral \eqref{eq:prior-integral},
 which we expand as
 
 $$
 \begin{multline}
     \label{eq:big_integral}
-    \int \frac{1}{\lvert Q_{k-1}\rvert^{1/2}}\exp\Big(-\frac{1}{2}w_{k-1}^TQ_{k-1}^{-1}w_{k-1}\Big) \cdot \\
+    c\int \frac{1}{\lvert Q_{k-1}\rvert^{1/2}}\exp\Big(-\frac{1}{2}w_{k-1}^TQ_{k-1}^{-1}w_{k-1}\Big) \cdot \\
     \frac{1}{\lvert P_{k-1}\rvert^{1/2}}\exp\Big(-\frac{1}{2}(x_{k-1}-\hat{x}_{k-1})^TP_{k-1}^{-1}(x_{k-1}-\hat{x}_{k-1})\Big)\,dx_{k-1},
 \end{multline}
 $$
 
-where $\lvert Q_{k-1}\rvert$ is the determinant.
+where $c$ is a constant, and $\lvert Q_{k-1}\rvert$ is the determinant.
 Using the new variables $\Delta x_{k-1} := x_{k-1} - \hat{x}\_{k-1}$ and
 $\eta := x_{k} - F_{k-1}\hat{x}_{k-1}$, and
 working out the exponent, we find that the above integral transforms into
@@ -140,7 +140,7 @@ $$
 \end{equation}
 $$
 
-Hence, the integral in \eqref{eq:big_integral} is proportional to
+Hence, the integral \eqref{eq:big_integral} is proportional to
 
 $$
 \begin{gather}
@@ -208,7 +208,7 @@ This tells us that $p(x_k\mid y_{1:k})$ is a normal distribution with mean and c
 
 $$
 \begin{gather}
-    \hat{x}_k = \hat{x}_{k-1} + K_k(y_k - H_k\hat{x}_{k}^-) \\
+    \hat{x}_k = \hat{x}_{k}^- + K_k(y_k - H_k\hat{x}_{k}^-) \\
     P_k = (H_k^TR_k^{-1}H_k + (P^-_k)^{-1})^{-1},
 \end{gather}
 $$
