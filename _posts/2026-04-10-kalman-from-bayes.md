@@ -98,7 +98,7 @@ Inductively, let us assume that $p(x_{k-1} \mid y_{1:k-1})$ is normal, with mean
 
 ### Prior density
 
-Let us start by computing the integral \eqref{eq:prior-integral},
+Let us start by computing integral \eqref{eq:half-simplification},
 which we expand as
 
 $$
