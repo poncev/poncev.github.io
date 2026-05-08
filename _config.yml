@@ -24,7 +24,7 @@ timezone:            Europe/Madrid
 title:		           'A Wandering Mathematician'
 description:	       'personal notes'
 author:              'Felipe Ponce-Vanegas'
-url:                 'https://a-wandering-mathematician.netlify.app'
+url:                 'https://poncev.github.io'
 baseurl:             ''
 lang:                'en'
 
