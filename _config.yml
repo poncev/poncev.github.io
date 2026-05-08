@@ -24,6 +24,9 @@ timezone:            Europe/Madrid
 title:		           'A Wandering Mathematician'
 description:	       'personal notes'
 author:              'Felipe Ponce-Vanegas'
+url:                 'https://a-wandering-mathematician.netlify.app'
+baseurl:             ''
+lang:                'en'
 
 # RSS 2.0 can be used instead of Atom by uncommenting following two lines
 #feed:

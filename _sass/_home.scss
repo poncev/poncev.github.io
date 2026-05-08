@@ -8,6 +8,16 @@
   list-style: none;
 }
 
+.posts-container h1 {
+  line-height: 1.35;
+}
+
+@media (max-width: $elements-responsive-width) {
+  .posts-container h1 {
+    line-height: 1.25;
+  }
+}
+
 /*
   Thumbnail
 */
