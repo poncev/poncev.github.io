@@ -2,6 +2,8 @@
   Base
 */
 
+@use "variables" as *;
+
 body {
   font-family: $serif-font-family;
   font-size: 18px;
