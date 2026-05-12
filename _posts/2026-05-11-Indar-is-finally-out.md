@@ -17,7 +17,7 @@ or the [Structural Dynamics Toolbox](https://www.sdtools.com/), so
 why develop another one? Initially, I simply wanted to learn the subject in depth.
 But once I started implementing the algorithms myself,
 sharing the work with the community felt like a natural next step.
-That eventually led me to publish the project in BCAM’s GitLab [repository](https://gitlab.bcamath.org/fponce/indar).
+That eventually led me to publish the project in a GitHub [repository](https://github.com/CFAA-EHU/bcam-indar).
 
 For a long time, I referred to the package simply as *resonance*,
 but when the time came to publish it, I needed a memorable name that was not already taken on PyPI.
