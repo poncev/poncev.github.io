@@ -2,7 +2,7 @@ name: Build and Deploy Jekyll
 
 on:
   push:
-    branches: ["develop", "main"]
+    branches: ["gh-pages"]
   workflow_dispatch:
 
 permissions:
@@ -16,11 +16,10 @@ concurrency:
 
 jobs:
   build:
-    if: github.ref == 'refs/heads/gh-pages'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
@@ -40,7 +39,6 @@ jobs:
           path: _site
 
   deploy:
-    if: github.ref == 'refs/heads/gh-pages'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
