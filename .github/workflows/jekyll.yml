@@ -24,14 +24,17 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.1"
-          bundler-cache: true
+          ruby-version: "3.2"
+          bundler-cache: false
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
       - name: Build site
-        run: bundle exec jekyll build --trace
+        run: |
+          bundle config set path vendor/bundle
+          bundle install --jobs 4 --retry 3 --verbose
+          bundle exec jekyll build --trace --verbose
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
