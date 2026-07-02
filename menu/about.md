@@ -62,7 +62,13 @@ Also, check out this <a href="https://gitlab.bcamath.org/fponce/git-for-mathemat
 
 ## List of papers
 
-1. <a id="tustin"></a>
+1. <a id="tool_wear_itp"></a>
+with Artabe, A., Polvorosa, R., Espina-Navarro, R., Fernández, A., & López de Lacalle, L.N. (2026)
+Tool wear estimation in drilling of Inconel 718 via Bayesian state-space modeling.
+*J. Manuf. Process.*, 173, 488--503. <https://doi.org/10.1016/j.jmapro.2026.06.050>.
+<a href="https://gitlab.bcamath.org/fponce/2025_wear_process" target="_blank"> Repo</a>.
+
+2. <a id="tustin"></a>
 with Irastorza, M. (2026).
 The Tustin Method for approximating eigenvalues of delay systems.
 *J. Comput. Appl. Math.*, 472, 116772. <https://doi.org/10.1016/j.cam.2025.116772>.
@@ -79,7 +85,7 @@ Semi-analytical Estimation for the Escape of Solutions of Linear Differential Eq
 *SIAM J. Appl. Math.*, 85(4), 1519--1549. <https://doi.org/10.1137/24M1685481>.
 <a href="https://gitlab.bcamath.org/fponce/variable-coefficients" target="_blank"> Repo</a>.
 
-2. <a id="bizzarri"></a>
+1. <a id="bizzarri"></a>
 with Bizzarri, M., & Barton, M. (2023).
 On $C^0$ and $C^1$ continuity of envelopes of rotational solids and its application to 5-axis CNC machining.
 *CAGD*, 107, 102245. <https://doi.org/10.1016/j.cagd.2023.102245>. <a href="{{ site.url }}/pdfs/Envelope_regularity.pdf" target="_blank"> Preprint </a> and <a href="https://gitlab.bcamath.org/fponce/envelopes-solids-of-revolutions" target="_blank"> repo</a>.
