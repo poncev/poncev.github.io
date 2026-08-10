@@ -164,10 +164,20 @@ Springer. <https://doi.org/10.1007/978-981-97-0364-7_7>.
 
 ## Former students
 
-1. García Sanabria, D. A. (2026). *Collision Detection, Robotics, and Path Planning*
+1. Uyarra Irigoyen, A. (2026).
+   *Spectral Analysis of Second-Order Delay Differential Equations via the Cayley Transform: An Application to Machining Chatter*
+   [Master's Thesis in Mathematical, Statistical, and Computational Modeling and Research,
+   University of the Basque Country].
+   Defense date: ?? September.
+
+2. García Sanabria, D. A. (2026).
+   *Collision Detection, Robotics, and Path Planning*
    [Bachelor's Thesis, DigiPen Institute of Technology Europe-Bilbao].
    Co-directed with Michael Barton.
 
-2. Irastorza, M. (2024). *Numerical methods for delay differential equations*
-   [Bachelor's Thesis, University of the Basque Country].
+3. Irastorza Zabalegi, M. (2024).
+   *Numerical methods for delay differential equations*
+   [Bachelor's Thesis in Mathematics, University of the Basque Country].
+   Co-directed with Luis Vega.
+   Defense date: 10th July.
    <a href="{{ site.url }}/pdfs/2024_Markel_TFG_Tustin.pdf" target="_blank"> Thesis </a>
