@@ -168,7 +168,8 @@ Springer. <https://doi.org/10.1007/978-981-97-0364-7_7>.
    *Spectral Analysis of Second-Order Delay Differential Equations via the Cayley Transform: An Application to Machining Chatter*
    [Master's Thesis in Mathematical, Statistical, and Computational Modeling and Research,
    University of the Basque Country].
-   Defense date: ?? September.
+   Defense date: 15th September.
+   <a href="{{ site.url }}/pdfs/2026_Uyarra_TFM_2nd-order-dde.pdf" target="_blank"> Thesis </a>
 
 2. García Sanabria, D. A. (2026).
    *Collision Detection, Robotics, and Path Planning*
