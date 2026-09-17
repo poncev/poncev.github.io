@@ -2,3 +2,42 @@
   {% include social-icons.html %}
   <div class="footer-description"><a href="{{ site.github.url }}/">{{ site.title }} | {{ site.description }} by {{ site.author }}</a></div>
 </footer>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('article pre.highlight').forEach((pre) => {
+      if (pre.parentElement && pre.parentElement.classList.contains('code-copy-wrap')) {
+        return;
+      }
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'code-copy-wrap';
+      pre.parentNode.insertBefore(wrapper, pre);
+      wrapper.appendChild(pre);
+
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'code-copy-button';
+      button.setAttribute('aria-label', 'Copy code to clipboard');
+      button.textContent = 'Copy';
+
+      const resetButton = () => {
+        button.textContent = 'Copy';
+      };
+
+      button.addEventListener('click', async () => {
+        const code = pre.innerText;
+
+        try {
+          await navigator.clipboard.writeText(code);
+          button.textContent = 'Copied';
+          window.setTimeout(resetButton, 1500);
+        } catch (error) {
+          button.textContent = 'Copy failed';
+          window.setTimeout(resetButton, 1500);
+        }
+      });
+
+      wrapper.appendChild(button);
+    });
+  });
+</script>

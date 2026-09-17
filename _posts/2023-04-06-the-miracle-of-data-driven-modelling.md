@@ -2,7 +2,7 @@
 layout: post
 title: "The Miracle of Data-Driven Modelling"
 author: "Felipe Ponce-Vanegas"
-categories: general
+categories: [ai, machine learning]
 ---
 
 A typical problem in machine learning is to fit a collection of labelled data points
