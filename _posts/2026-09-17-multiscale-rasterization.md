@@ -257,6 +257,8 @@ In a serious project I should take my time to sit down and
 thoroughly understand the code, but will I?
 With the academic pressure to maximize output, will I do a responsible job or just generate AI slop at scale?
 
+[The post was first written by me, and then polished with AI]
+
 ## References
 
 {% bibliography --cited %}
