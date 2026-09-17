@@ -1,9 +1,10 @@
 ---
 layout: post
-title: "Multiscale rasterization: exploring multi-agentic ai"
+title: "Multiscale rasterization: exploring multi-agentic AI"
 author: "Felipe Ponce-Vanegas"
-categories: general
-tags: [ai, coding]
+categories: ai
+tags: [agentic ai, copilot, openrouter, multiscale rasterization, c++, python]
+description: "A short write-up about building a multiscale rasterization prototype with multi-agent AI tools in VS Code."
 ---
 
 Programming with a single agent seems, at the pace technology is advancing, like the Stone Age.

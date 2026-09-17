@@ -2,7 +2,9 @@
 layout: post
 title: "The Miracle of Data-Driven Modelling"
 author: "Felipe Ponce-Vanegas"
-categories: [ai, machine learning]
+categories: machine-learning
+tags: [machine learning, data-driven modelling, regression]
+description: "A short introduction to fitting labelled data with model functions in a machine-learning setting."
 ---
 
 A typical problem in machine learning is to fit a collection of labelled data points
