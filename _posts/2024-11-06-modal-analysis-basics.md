@@ -2,8 +2,9 @@
 layout: post
 title: "Modal Analysis: the basics"
 author: "Felipe Ponce-Vanegas"
-categories: general
-tags: [modal analysis]
+categories: engineering
+tags: [modal analysis, vibrations, structural dynamics]
+description: "A basic introduction to linear vibration models and modal analysis."
 ---
 
 Vibrating mechanical systems are modelled by the equation

@@ -2,8 +2,9 @@
 layout: post
 title: "Modal Analysis: dynamics"
 author: "Felipe Ponce-Vanegas"
-categories: general
-tags: [modal analysis]
+categories: engineering
+tags: [modal analysis, vibrations, dynamics, structural dynamics]
+description: "A follow-up post on the dynamics of linear vibration models."
 ---
 
 In this follow-up to [our post on basic concepts]({% post_url 2024-11-06-modal-analysis-basics %}),

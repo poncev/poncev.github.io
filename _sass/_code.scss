@@ -45,6 +45,31 @@ pre.highlight {
   margin-bottom: 1rem;
   border-radius: 4px;
 }
+.code-copy-wrap {
+  position: relative;
+}
+.code-copy-button {
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  padding: .35rem .7rem;
+  border: 0;
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, .92);
+  color: $dark-gray-color;
+  font-size: .75rem;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .12);
+}
+.code-copy-button:hover {
+  background-color: #fff;
+}
+.code-copy-button:focus {
+  outline: 2px solid $link-color;
+  outline-offset: 2px;
+}
 .highlight pre {
   margin-bottom: 0;
 }

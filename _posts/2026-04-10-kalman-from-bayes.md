@@ -2,8 +2,9 @@
 layout: post
 title: "Kalman filter from Bayes filter"
 author: "Felipe Ponce-Vanegas"
-categories: general
-tags: [bayesian statistics]
+categories: statistics
+tags: [kalman filter, bayesian statistics, state estimation, bayes filter]
+description: "A derivation of the Kalman filter from the Bayes filter viewpoint."
 ---
 
 An important problem in engineering is to estimate the evolution of a hidden (latent) variable,

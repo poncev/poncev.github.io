@@ -2,8 +2,9 @@
 layout: post
 title: "Indar is finally out! A Python package for the analysis of vibrations"
 author: "Felipe Ponce-Vanegas"
-categories: general
-tags: [modal analysis,Python package]
+categories: engineering
+tags: [modal analysis, vibrations, experimental modal analysis, python package]
+description: "An announcement of Indar, a Python package for vibration analysis and experimental modal analysis."
 ---
 
 This project started because I wanted to model machining processes such as turning,
